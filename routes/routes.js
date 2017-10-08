@@ -11,12 +11,14 @@ module.exports = function Route(app, server, counter) {
             counter += 1;
             data = counter;
             console.log('My data is: ' + data);
+            // Using io.emit broadcasts to all the browser windows so data gets updated real-time
             io.emit('update_counter', {response: data});
         })
         socket.on("reset_button", function(data){
             counter = 0;
             data = counter;
             console.log('My data is: ' + data);
+            // Using io.emit broadcasts to all the browser windows so data gets updated real-time
             io.emit('update_counter', {response: data});
         })
     })
